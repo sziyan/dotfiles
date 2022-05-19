@@ -1,0 +1,212 @@
+# This is a demo config to bring across some of the most important commands more easily.
+# This is meant to be changed and configured, as it is intentionally kept sparse.
+# For a more advanced configuration example see https://github.com/FelixKratz/SketchyBar/discussions/47#discussioncomment-2027233
+
+##### Bar Appearance #####
+# Configuring the general appearance of the bar, these are only some of the
+# options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+
+# Colors
+source $HOME/.config/sketchybar/colors
+
+sketchybar --bar height=32        \
+                 blur_radius=0   \
+                 position=top     \
+                 padding_left=5   \
+                 padding_right=5  \
+                 color=0xff000000   \
+                 notch_width=0     \
+                 
+
+
+##### Changing Defaults #####
+# We now change some default values that are applied to all further items
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
+
+sketchybar --default updates=when_shown                    \
+                     drawing=on                            \
+                     icon.font="Hack Nerd Font:Bold:17.0"  \
+                     icon.color=0xffffffff                 \
+                     label.font="Hack Nerd Font:Bold:14.0" \
+                     label.color=0xffffffff                \
+                     label.padding_left=4                  \
+                     label.padding_right=8                 \
+                     icon.padding_left=4                   \
+
+##### Adding Mission Control Space Indicators #####
+# Now we add some space components:
+# https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
+# to indicate active and available mission control spaces
+
+sketchybar --add space code left                              \
+           --set code icon.font="Hack Nerd Font:Bold:20.0"    \
+                      icon=                                  \
+                      icon.highlight_color=0xffffff             \
+                      label="ziyan"                              
+
+#==- Y A B A I SPACES ===
+sketchybar --add  item  yabai_spaces left                                     \
+              --set       yabai_spaces   drawing=off                                           \
+                                         updates=on                                            \
+                                         script="~/.config/sketchybar/plugins/yabai_spaces.sh" \
+              --subscribe yabai_spaces   space_change window_created window_destroyed          \
+                                                                                               \
+              --add       item           space_template left                                   \
+              --set       space_template icon.highlight_color=0xff9dd274                       \
+                                         drawing=off                                           \
+                                         click_script="~/.config/sketchybar/plugins/change_space.sh \$NAME"          \
+                                         lazy=off
+
+# sketchybar --add space home left        \
+# --set home icon=                       \
+# label=home                          \
+# associated_display=1                \
+# associated_space=1                  \
+# script="~/.config/sketchybar/plugins/yabai_spaces.sh"   \
+# click_script="~/.config/sketchybar/plugins/change_space.sh \$NAME" \
+# --subscribe home space_change       
+
+# sketchybar --add space study left        \
+# --set study icon=                       \
+# label=study                          \
+# associated_display=1                \
+# associated_space=2                  \
+# script="~/.config/sketchybar/plugins/yabai_spaces.sh"   \
+# click_script="~/.config/sketchybar/plugins/change_space.sh \$NAME" \
+# --subscribe study space_change       
+
+# sketchybar --add space love left        \
+# --set love icon=♥                       \
+# label=love                          \
+# associated_display=2                \
+# associated_space=3                  \
+# script="~/.config/sketchybar/plugins/yabai_spaces.sh"   \
+# click_script="~/.config/sketchybar/plugins/change_space.sh \$NAME" \
+# --subscribe love space_change   
+
+# sketchybar --add space extra left        \
+# --set extra icon=♥                       \
+# label=extra                          \
+# associated_display=3                \
+# associated_space=4                  \
+# script="~/.config/sketchybar/plugins/yabai_spaces.sh"   \
+# click_script="~/.config/sketchybar/plugins/change_space.sh \$NAME" \
+# --subscribe extra space_change  
+
+# sketchybar --add bracket primary_spaces home study \
+# --set primary_spaces background.color=0xff9ccfd8  \
+# background.border_color=0x000000    \
+# background.border_width=2   \
+# associated_display=1
+
+
+sketchybar --add item app left                                          \
+            --set app icon=גּ                                             \
+            icon.color=0xfffd280a                                       \
+            script="~/.config/sketchybar/plugins/window_change.sh"      \
+            --subscribe app front_app_switched                           \                         
+
+##### Adding Left Items #####
+# We add some regular items to the left side of the bar
+# only the properties deviating from the current defaults need to be set
+
+
+
+# === Y A B A I Space Mode ===
+sketchybar --add item yabai_mode left \
+              --set yabai_mode update_freq=3 \
+              --set yabai_mode script="~/.config/sketchybar/plugins/yabai_mode.sh" \
+              --set yabai_mode click_script="~/.config/sketchybar/plugins/yabai_mode_click.sh" \
+              background.color=0xff6a1fad                                                   \
+              --subscribe yabai_mode space_change
+
+# === Y A B A I Window Mode ===
+sketchybar --add item yabai_float left                                                    \
+--add       event              window_focus                                                        \
+--add       event              float_change                                                        \
+--set       yabai_float        script="~/.config/sketchybar/plugins/yabai_float.sh"                \
+click_script="~/.config/sketchybar/plugins/yabai_float_click.sh"    \
+lazy=off                                                            \
+background.color=0xff6a1fad                                         \
+--subscribe yabai_float        front_app_switched window_focus float_change                        \
+
+############## ITEM DEFAULTS ###############
+sketchybar -m --default label.padding_left=0 \
+                        icon.padding_right=3 \
+                        icon.padding_left=6 \
+                        label.padding_right=3
+
+##### Adding Right Items #####
+
+# === D A T E & T I M E ===
+sketchybar --add item clock right                                                                  \
+           --set clock         update_freq=10                                                      \
+                               script="~/.config/sketchybar/plugins/clock.sh"                      \
+                                icon=                                                              \
+                                icon.color=0xffE7EE09                                               \
+                                                                                                   \
+                                                                                                    \
+          --add item battery right                                                                  \
+          --set battery update_freq=3                                                                 \
+                        script="~/.config/sketchybar/plugins/power.sh"                              \
+                        icon=                                                                      \
+                                                                                                    \
+
+# ==== V O L U M E =====
+sketchybar --add item sound right     \
+--set sound                \
+update_freq=5              \
+icon.color=0xffd08770      \
+script="~/.config/sketchybar/plugins/sound.sh"
+
+# === W I F I ===
+sketchybar --add item ssid right    \
+--set ssid script="~/.config/sketchybar/plugins/wifi_ssid.sh"   \
+update_freq=5    \
+icon=          \
+label.padding_right=10              \
+icon.color=0xff00FF00               \
+icon.padding_right=0          
+
+# === V P N ===
+
+sketchybar --add item vpn right                                                                     \
+--set vpn icon=嬨                                                                     \
+icon.color=0xffA3BE8C   \
+update_freq=5                                                              \
+script="~/.config/sketchybar/plugins/vpn.sh"                                \
+
+# === Timery ===
+sketchybar --add alias Timery right                                         \
+
+
+##### Adding Center Items #####
+# Adding custom events which can listen on distributed notifications from other running processes:
+# https://felixkratz.github.io/SketchyBar/config/events
+
+sketchybar --add event spotify_change "com.spotify.client.PlaybackStateChanged"                       \
+           --add item spotifyIndicator q=0                                                         \
+           --set spotifyIndicator script="~/.config/sketchybar/plugins/spotifyIndicator.sh"           \
+                                  click_script="osascript -e 'tell application \"Spotify\" to pause'" \
+                                  background.color=0xfff11313                                           \
+                                  background.corner_radius=10                                           \
+           --subscribe spotifyIndicator spotify_change
+
+
+
+## Brackets
+
+sketchybar --add bracket misc ssid vpn  \
+--set misc background.color=0xff3B4252 \
+                          background.height=20 \
+                          background.padding_left=5 \
+                          background.padding_right=5
+
+##### Finalizing Setup #####
+sketchybar --update
+
+echo "sketchybar configuration loaded.."

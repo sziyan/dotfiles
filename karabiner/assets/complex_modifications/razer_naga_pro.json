@@ -1,0 +1,257 @@
+{
+    "title": "Razer Naga Pro v2",
+    "rules": [
+        {
+            "description": "Key 1 to New Tab",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "identifiers": [
+                                {
+                                    "product_id": 144,
+                                    "vendor_id": 5426
+                                }
+                            ],
+                            "type": "device_if"
+                        }
+                    ],
+                    "type": "basic",
+                    "from": {
+                        "key_code": "1"
+                    },
+                    "to": [
+                        {
+                            "key_code": "r",
+                            "modifiers": [
+                                "left_option"
+                            ]
+                        }
+                    ]
+                    
+                }
+            ]
+        },
+        {
+            "description": "Key 2 to Refresh",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "identifiers": [
+                                {
+                                    "product_id": 144,
+                                    "vendor_id": 5426
+                                }
+                            ],
+                            "type": "device_if"
+                        }
+                    ],
+                    "type": "basic",
+                    "from": {
+                        "key_code": "2"
+                    },
+                    "to": [
+                        {
+                            "key_code": "r",
+                            "modifiers": [
+                                "left_command"
+                            ]
+                        }
+                    ]
+                    
+                }
+            ]
+        },
+        {
+            "description": "Key 3 to Close Tab",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "identifiers": [
+                                {
+                                    "product_id": 144,
+                                    "vendor_id": 5426
+                                }
+                            ],
+                            "type": "device_if"
+                        }
+                    ],
+                    "type": "basic",
+                    "from": {
+                        "key_code": "3"
+                    },
+                    "to": [
+                        {
+                            "key_code": "w",
+                            "modifiers": [
+                                "left_command"
+                            ]
+                        }
+                    ]
+                    
+                }
+            ]
+        },
+        {
+            "description": "Key 4 to Rewind",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "identifiers": [
+                                {
+                                    "product_id": 144,
+                                    "vendor_id": 5426
+                                }
+                            ],
+                            "type": "device_if"
+                        }
+                    ],
+                    "from": {
+                        "key_code": "4"
+                    },
+                    "to": [
+                        {
+                            "key_code": "rewind"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "Key 5 to Play/Pause",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "identifiers": [
+                                {
+                                    "product_id": 144,
+                                    "vendor_id": 5426
+                                }
+                            ],
+                            "type": "device_if"
+                        }
+                    ],
+                    "from": {
+                        "key_code": "5"
+                    },
+                    "to": [
+                        {
+                            "key_code": "play_or_pause"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "Key 6 to Fast Forward",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "identifiers": [
+                                {
+                                    "product_id": 144,
+                                    "vendor_id": 5426
+                                }
+                            ],
+                            "type": "device_if"
+                        }
+                    ],
+                    "from": {
+                        "key_code": "6"
+                    },
+                    "to": [
+                        {
+                            "consumer_key_code": "fast_forward"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "_comment": "Browser back page",
+            "description": "Key 7 to browser back page",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "identifiers": [
+                                {
+                                    "product_id": 144,
+                                    "vendor_id": 5426
+                                }
+                            ],
+                            "type": "device_if"
+                        },
+                        {
+                            "bundle_identifiers": [
+                                "^com\\.brave\\.Browser$",
+                                "^com\\.google\\.chrome$",
+                                "^com\\.apple\\.safari$"
+                            ],
+                            "type": "frontmost_application_if"
+                        }
+                    ],
+                    "from": {
+                        "key_code": "7"
+                    },
+                    "to": [
+                        {
+                            "key_code": "open_bracket",
+                            "modifiers": [
+                                "left_command"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "_comment": "Browser front page",
+            "description": "Key 8 to browser back page",
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "identifiers": [
+                                {
+                                    "product_id": 144,
+                                    "vendor_id": 5426
+                                }
+                            ],
+                            "type": "device_if"
+                        },
+                        {
+                            "bundle_identifiers": [
+                                "^com\\.brave\\.Browser$",
+                                "^com\\.google\\.chrome$",
+                                "^com\\.apple\\.safari$"
+                            ],
+                            "type": "frontmost_application_if"
+                        }
+                    ],
+                    "from": {
+                        "key_code": "8"
+                    },
+                    "to": [
+                        {
+                            "key_code": "close_bracket",
+                            "modifiers": [
+                                "left_command"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        }
+    ]
+}
