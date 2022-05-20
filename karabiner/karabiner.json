@@ -504,55 +504,6 @@
                         ]
                     },
                     {
-                        "description": "[Window Management] Hyper Key + 2 -> Window window to next space",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "2",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control",
-                                            "left_command",
-                                            "left_option",
-                                            "left_shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space next"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "[Window Management] Hyper Key + 1 -> Window window to previous space",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "1",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control",
-                                            "left_command",
-                                            "left_option",
-                                            "left_shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "/opt/homebrew/bin/yabai -m window --space prev"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    
-                    {
                         "description": "Launcher Mode",
                         "manipulators": [
                             {

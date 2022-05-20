@@ -85,6 +85,11 @@ hyper - 0x29: yabai -m window --resize right:20:0   #0x29 is ;
 #   Toggle float and move it to middle of screen
 hyper - t: yabai -m window --toggle float; yabai -m window --grid 1:8:1:7:6:1; sketchybar -m --trigger float_change
 
+#== S P A C E Management ===
+hyper - 1: yabai -m window --space 1
+hyper - 2: yabai -m window --space 2
+hyper - 3: yabai -m window --space 3
+
 # === M O V E Window ===
 hyper - i: ~/.config/yabai/moveWindowRightAndFollowFocus.sh
 hyper - a : yabai -m space --mirror y-axis
@@ -102,10 +107,10 @@ hyper - 0x21: yabai -m window --focus prev  #0x21 is [
 
 
 # == Stacking Windows ==
-# cmd + ctrl - left  : yabai -m window west --stack $(yabai -m query --windows --window | jq -r '.id')
-# cmd + ctrl - down  : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id')
-# cmd + ctrl - up    : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id')
-# cmd + ctrl - right : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id')
-# hyper - e : yabai -m window --focus stack.next
-# hyper - r : yabai -m window --focus stack.prev
-# hyper - 7 : yabai -m window --warp $(yabai -m query --windows --window | jq -r '.id')
+cmd + ctrl - left  : yabai -m window west --stack $(yabai -m query --windows --window | jq -r '.id')
+cmd + ctrl - down  : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id')
+cmd + ctrl - up    : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id')
+cmd + ctrl - right : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id')
+hyper - w : yabai -m window --focus stack.prev
+hyper - e : yabai -m window --focus stack.next
+#hyper - 7 : yabai -m window --warp $(yabai -m query --windows --window | jq -r '.id')

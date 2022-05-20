@@ -14,17 +14,25 @@ if [ "$(osascript -e 'if application "Spotify" is running then tell application 
   ALBUM=$(osascript -e 'tell application "Spotify" to get album of current track')
 fi
 
-[ "${#TRACK}" -gt 10 ] && TRACK="$(echo $TRACK | head -c 15)…"
+[ "${#TRACK}" -gt 15 ] && TRACK="$(echo $TRACK | head -c 15)…"
 [ "${#ARTIST}" -gt 10 ] && ARTIST="$(echo $ARTIST | head -c 10)…"
 
+# if [ $RUNNING -eq 0 ] && [ $PLAYING -eq 0 ]; then
+#   if [ "$ARTIST" == "" ]; then
+#     sketchybar --set $NAME label=" $TRACK  $ALBUM  " \
+#     background.drawing=on
+#   else
+#     sketchybar --set $NAME label=" $TRACK  $ARTIST  " \
+#     background.drawing=on
+#   fi
+# else
+#   sketchybar --set $NAME label="" \
+#   background.drawing=off
+# fi
+
 if [ $RUNNING -eq 0 ] && [ $PLAYING -eq 0 ]; then
-  if [ "$ARTIST" == "" ]; then
-    sketchybar --set $NAME label=" $TRACK  $ALBUM " \
+    sketchybar --set $NAME label=" $TRACK " \
     background.drawing=on
-  else
-    sketchybar --set $NAME label=" $TRACK  $ARTIST " \
-    background.drawing=on
-  fi
 else
   sketchybar --set $NAME label="" \
   background.drawing=off

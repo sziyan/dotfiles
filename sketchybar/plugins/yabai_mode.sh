@@ -2,12 +2,12 @@ yabai_mode=$(yabai -m query --spaces --display | jq -r 'map(select(."has-focus" 
 
 case "$yabai_mode" in
     bsp)
-    sketchybar --set yabai_mode label=""
+    sketchybar --set yabai_mode icon=""
     ;;
     stack)
-    sketchybar --set yabai_mode label="﯅"
+    sketchybar --set yabai_mode icon="﯅"
     ;;
     float)
-    sketchybar --set yabai_mode label=""
+    sketchybar --set yabai_mode icon=""
     ;;
 esac

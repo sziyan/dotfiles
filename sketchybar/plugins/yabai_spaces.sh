@@ -6,14 +6,14 @@ args=()
 QUERY="$(yabai -m query --spaces | jq -r '.[] | [.index, .windows[1], .label, .display, ."is-visible"] | @sh')"
 NAMES=""
 COUNT=0
-
 # Read the current spaces from the yabai query
 while read -r index window yabai_name display visible
 do
   COUNT=$((COUNT+1))
   NAME="$(echo "${yabai_name}" | tr -d "'")"
-  pid="$(yabai -m query --windows --window ${window} | jq '.pid' )"
+  #pid="$(yabai -m query --windows --window ${window} | jq '.pid' )"
   
+
   # if [ "${window}" = "null" ]; then
   #   label="${NAME}"
   # elif [ "${pid}" -eq "832" ]; then
@@ -34,15 +34,16 @@ do
                        associated_display=${display} \
                        icon.highlight=${visible} \
                        drawing=on)
-  # sketchybar --set "${NAME}" label.highlight=${visible} \
-  # label.highlight_color=0xffd1b620
-
 
 done <<< "$QUERY"
+
+
 
 # Reorder them and stick them onto sketchybar
 args+=(--reorder $NAMES)
 sketchybar -m ${args[@]} &> /dev/null
+
+
 
 # sketchybar --add bracket primary_spaces $NAMES  \
 # --set primary_spaces background.color=0xfff6c177  \
