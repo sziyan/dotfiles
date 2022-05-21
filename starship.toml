@@ -19,5 +19,5 @@ disabled = true
 format = "$all"
 
 [[battery.display]]
-threshold = 10
-style = "bold green"
+threshold = 40
+style = "bold red"
